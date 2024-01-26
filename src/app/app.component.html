@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <ng-container *ngIf="!visualizarMenu(); else principalContent">
+        <app-login></app-login>
+      </ng-container>
+      <ng-template #principalContent>
+        <app-principal></app-principal>
+      </ng-template>
+    </div>
+  </div>
+</div>

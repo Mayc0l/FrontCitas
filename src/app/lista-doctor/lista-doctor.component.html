@@ -1,0 +1,46 @@
+<div class="container mt-5">
+  <!-- Agregado margen superior (mt-5) para separar del menú principal -->
+  <div class="row">
+    <div class="col-12">
+      <h2 class="mb-3">Lista de Doctores</h2>
+      <!-- Agregado título "Lista de Doctores" -->
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <!-- Botón para agregar nuevo doctor -->
+        <a class="btn btn-primary" [routerLink]="['/doctores/agregar']">+</a>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>CEDULA</th>
+            <th>NOMBRES</th>
+            <th>APELLIDOS</th>
+            <th>ESPECIALIDAD</th>
+            <th>DIRECCION</th>
+            <th>CELULAR</th>
+            <th colspan="2">ACCIONES</th> <!-- colspan="2" para abarcar dos columnas -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let doctor of doctores | async">
+            <td>{{doctor.iddoctor}}</td>
+            <td>{{doctor.ceduladr}}</td>
+            <td>{{doctor.nombredr}}</td>
+            <td>{{doctor.apellidodr}}</td>
+            <td>{{doctor.especialidad}}</td>
+            <td>{{doctor.direcciondr}}</td>
+            <td>{{doctor.celulardr}}</td>
+            <td>
+              <!-- Botón para editar doctor -->
+              <a class="btn btn-info" [routerLink]="['/doctores/actualizar/', doctor.iddoctor]">Editar</a>
+            </td>
+            <td>
+              <!-- Botón para borrar doctor -->
+              <a class="btn btn-danger" (click)="borrarDoctor(doctor.iddoctor)">Borrar</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

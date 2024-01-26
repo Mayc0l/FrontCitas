@@ -1,0 +1,64 @@
+<div class="container mt-3">
+  <!-- Agregado margen superior (mt-5) para separar del menú principal -->
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h2 class="mb-3">Formulario de Citas</h2>
+      <!-- Agregado título "Formulario de Citas" -->
+      <form (ngSubmit)="onSubmit()" #citaForm="ngForm" class="needs-validation" novalidate>
+        <div class="mb-3">
+          <label for="idusuario" class="form-label">Usuario</label>
+          <select class="form-control" [(ngModel)]="usuarioSeleccionadoId" name="usuario" required>
+            <option value="" disabled selected>Selecciona un usuario</option>
+            <option *ngFor="let usuario of usuarios" [value]="usuario.idusuario">
+              {{ usuario.nombres }} - {{ usuario.direccion }}
+            </option>
+          </select>
+          <div class="invalid-feedback">
+            Por favor, selecciona un usuario.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="iddoctor" class="form-label">Doctor</label>
+          <select class="form-control" [(ngModel)]="doctorSeleccionadoId" name="doctor" required>
+            <option value="" disabled selected>Selecciona un doctor</option>
+            <option *ngFor="let doctor of doctores" [value]="doctor.iddoctor">
+              {{ doctor.nombredr }} - {{ doctor.especialidad }}
+            </option>
+          </select>
+          <div class="invalid-feedback">
+            Por favor, selecciona un doctor.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="sintomas" class="form-label">Síntomas</label>
+          <textarea class="form-control" rows="3" required [(ngModel)]="cita.sintomas" name="sintomas"></textarea>
+          <div class="invalid-feedback">
+            Por favor, proporciona los síntomas.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="fecha" class="form-label">Fecha</label>
+          <input type="text" class="form-control" required [(ngModel)]="cita.fecha" name="fecha">
+          <div class="invalid-feedback">
+            Por favor, proporciona una fecha válida.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="tratamiento" class="form-label">Tratamiento</label>
+          <textarea class="form-control" rows="3" required [(ngModel)]="cita.tratamiento" name="tratamiento"></textarea>
+          <div class="invalid-feedback">
+            Por favor, proporciona un tratamiento.
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary" [disabled]="!citaForm.form.valid">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

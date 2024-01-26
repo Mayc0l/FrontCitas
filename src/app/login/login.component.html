@@ -1,0 +1,28 @@
+
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card login-card">
+      <div class="card-body">
+        <form [formGroup]="myForm" (ngSubmit)="submitFormulario()">
+          <h2 class="card-title">Inicio de Sesión</h2>
+          <div class="mb-3">
+            <label for="example" class="form-label">Usuario:</label>
+            <input formControlName="usuario" [class.is-invalid]="f.usuario.errors && f.usuario.touched" type="text" class="form-control" id="example" placeholder="utm">
+            <div class="invalid-feedback" *ngIf="f.usuario.errors && f.usuario.touched">
+              Usuario necesario para acceder!
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="example2" class="form-label">Contraseña:</label>
+            <input formControlName="password" [class.is-invalid]="f.password.errors && f.password.touched" type="password" class="form-control" id="example2" placeholder="777">
+            <div class="invalid-feedback" *ngIf="f.password.errors && f.password.touched">
+              Contraseña necesaria para acceder!
+            </div>
+          </div>
+          <div class="mb-3 text-center">
+            <button class="btn btn-success btn-block">Iniciar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
